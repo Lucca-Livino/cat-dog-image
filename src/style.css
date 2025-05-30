@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  border: 0;
+
+}
+
+.formulario {
+    border-style: 1px #010101;
+    border-radius: 4px;
+    box-shadow: 3px 3px 4px #818181;
+    padding: 40px;
+    width: 400px;
+    margin: 20px auto;
+    background-color: #ffffff;
+}
