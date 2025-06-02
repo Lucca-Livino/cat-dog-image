@@ -1,19 +1,46 @@
 import './style.css'
 
-const formulario = document.querySelector<HTMLFormElement>("#formulario")!
-const selecionar = document.querySelector<HTMLInputElement>("#selecionar")!
-const img = document.querySelector<HTMLDivElement>('#img')!
+const opcoes = document.querySelector<HTMLSelectElement>('#opcoes')!
+const img = document.querySelector<HTMLImageElement>('#img')!
+const selecionar = document.querySelector<HTMLInputElement>('#selecionar')!;
 
 
-async function selecionarGato(){
-  const result = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1")
-  const body = await result.json()
+async function executar() {
+    if (opcoes.value == "gato") {
+        const gato = await selecionarGato()
+        img.src = gato[0].url
+    }
 
-  img.innerHTML = `
-    <div>
-    <p>teste</p>
-    <img src="${body.url}" alt="">
-    </div>
-  `
+    if (opcoes.value == "cachorro")  {
+        const cachorro = await selecionarCachorro()
+        img.src = cachorro.message
+    }
 
+}
+
+selecionar.addEventListener('click', (event) => {
+    event.preventDefault()
+    executar()
+})
+
+executar()
+
+
+async function selecionarCachorro() {
+    const cachorro = await fetch('https://dog.ceo/api/breeds/image/random')
+    if (!cachorro.ok) {
+        console.error('Erro ao buscar Cachorro')
+        return {}
+    }
+    
+    return cachorro.json()
+}
+
+async function selecionarGato() {
+    const gato = await fetch('https://api.thecatapi.com/v1/images/search')
+    if (!gato.ok) {
+        console.error('Erro ao buscar Gato')
+        return {}
+    }
+    return gato.json()
 }

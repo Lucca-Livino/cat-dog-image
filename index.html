@@ -1,27 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cat & dog</title>
-  </head>
-  <body>
-    <form id="formulario" class="formulario">
-      <div id="img"></div>
-      <div class="bloco">
-        <label for="selecionar" class="label">Cachorros ou Gatos?</label>
-        <select name="selecao" id="selecao">
-          <option value="" disabled selected hidden>Selecione...</option>
-          <option value="gato" class="gato">Gato</option>
-          <option value="cachorro" class="cachorro">Cachorro</option>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cat & dog</title>
+</head>
+
+<body>
+  <div class="card">
+    <div class="titulo">Gato ou Cachorro?</div>
+    <div class="conteudo-horizontal">
+      <div class="img">
+        <img src="" id="img" />
+      </div>
+      <div class="formulario">
+        <select name="opcoes" id="opcoes">
+          <option value="">Selecione...</option>
+          <option value="cachorro">Cachorro</option>
+          <option value="gato">Gato</option>
         </select>
+        <input type="submit" value="Selecionar" id="selecionar" class="selecionar" />
       </div>
-      <div class="bloco">
-        <input type="submit" class="botao" value="Ver imagem">
+    </div>
+  </div>
 
-      </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
 
-    <script type="module" src="/src/main.ts"></script>
-  </body>
 </html>
